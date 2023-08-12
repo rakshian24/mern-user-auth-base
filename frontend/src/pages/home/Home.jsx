@@ -1,7 +1,6 @@
 import React from 'react';
-import SignUp from '../../components/SignUp';
-import SignIn from '../../components/SignIn';
 import { styled } from 'styled-components';
+import { Outlet } from 'react-router-dom';
 
 const ContentContainer = styled.div`
   display: flex;
@@ -21,8 +20,7 @@ const ContentContainer = styled.div`
 const Home = () => {
   return (
     <ContentContainer>
-      {/* <SignUp /> */}
-      <SignIn />
+      <Outlet />
     </ContentContainer>
   )
 }

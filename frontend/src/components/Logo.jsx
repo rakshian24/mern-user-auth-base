@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 const LogoTitle = styled.div`
@@ -8,7 +9,9 @@ const LogoTitle = styled.div`
 
 const Logo = ({ title }) => {
   return (
-    <LogoTitle>{title}</LogoTitle>
+    <Link to="/">
+      <LogoTitle>{title}</LogoTitle>
+    </Link>
   )
 }
 

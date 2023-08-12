@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ErrorText, FormButton, FormFooterTextContainer, FormHeading, FormItem } from '../common/styled-components';
+import { ErrorText, FormButton, FormFooterTextContainer, FormHeading, FormItem, StyledLink } from '../common/styled-components';
 
 const defaultFormFields = {
   name: "",
@@ -96,7 +96,7 @@ const SignUp = () => {
           </FormItem>
 
           <FormFooterTextContainer>
-            <p>Already have an account? <span>Sign In</span></p>
+            <p>Already have an account? <StyledLink to={'/sign-in'}>Sign In</StyledLink></p>
           </FormFooterTextContainer>
 
           <FormButton className="form-button" type="submit">

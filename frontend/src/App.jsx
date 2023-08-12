@@ -2,6 +2,9 @@ import React from 'react';
 import Home from './pages/home/Home';
 import { styled } from 'styled-components';
 import Header from './components/Header';
+import { Route, Routes } from 'react-router-dom';
+import SignUp from './components/SignUp';
+import SignIn from './components/SignIn';
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -23,7 +26,12 @@ const App = () => {
     <AppWrapper>
       <Header />
       <AppContainer>
-        <Home />
+        <Routes>
+          <Route path='/' element={<Home />}>
+            <Route element={<SignUp />} index />
+            <Route element={<SignIn />} path='sign-in' />
+          </Route>
+        </Routes>
       </AppContainer>
     </AppWrapper>
   )
