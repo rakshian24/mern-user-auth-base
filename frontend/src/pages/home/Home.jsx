@@ -1,5 +1,6 @@
 import React from 'react';
 import SignUp from '../../components/SignUp';
+import SignIn from '../../components/SignIn';
 import { styled } from 'styled-components';
 
 const ContentContainer = styled.div`
@@ -20,7 +21,8 @@ const ContentContainer = styled.div`
 const Home = () => {
   return (
     <ContentContainer>
-      <SignUp />
+      {/* <SignUp /> */}
+      <SignIn />
     </ContentContainer>
   )
 }
