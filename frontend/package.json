@@ -1,5 +1,5 @@
 {
-  "name": "mern-stack-user-auth-base-fe",
+  "name": "mern-user-auth-base-fe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
