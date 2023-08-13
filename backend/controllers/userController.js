@@ -13,7 +13,7 @@ const signInUser = asyncHandler(async (req, res) => {
   if (user && (await user.matchPassword(password))) {
     generateToken(res, user._id);
 
-    res.json({
+    res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
@@ -70,10 +70,18 @@ const signOutUser = asyncHandler((req, res) => {
 // description  Get a user profile
 // route        GET /api/v1/users/profile
 // access       Private
-const getUserProfile = asyncHandler((req, res) => {
-  res.status(200).json({
-    message: 'User Profile'
-  });
+const getUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (user) {
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
 });
 
 // description  Update user profile
