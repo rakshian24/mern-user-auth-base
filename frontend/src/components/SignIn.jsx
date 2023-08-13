@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { ErrorText, FormButton, FormFooterTextContainer, FormHeading, FormItem, StyledLink } from '../common/styled-components';
 import { useSignInMutation } from '../slices/userApiSlice';
 import { setCredentials } from '../slices/authSlice';
+import LoadingSpinner from './icons/LoadingSpinner';
 
 const defaultFormFields = {
   email: "",
@@ -57,6 +58,10 @@ const SignIn = () => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
 
   return (
     <div>

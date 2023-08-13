@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+
 import { ErrorText, FormButton, FormFooterTextContainer, FormHeading, FormItem, StyledLink } from '../common/styled-components';
+import { useSignUpMutation } from '../slices/userApiSlice';
+import { setCredentials } from '../slices/authSlice';
+import LoadingSpinner from './icons/LoadingSpinner';
 
 const defaultFormFields = {
   name: "",
@@ -12,10 +19,36 @@ const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [formError, setFormError] = useState({});
 
-  const handleSubmit = (event) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [register, { isLoading }] = useSignUpMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/dashboard');
+    }
+  }, [navigate, userInfo]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setFormError(handleValidation());
-    console.log("FORM_FIELDS = ", formFields);
+
+    const { password, confirmPassword } = formFields;
+
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+    } else {
+      try {
+        const res = await register({ ...formFields }).unwrap();
+        dispatch(setCredentials({ ...res }));
+        navigate('/dashboard');
+      } catch (err) {
+        toast.error(err?.data?.message || err.error);
+      }
+    }
   };
 
   const handleValidation = () => {
@@ -41,6 +74,10 @@ const SignUp = () => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
 
   return (
     <div>
