@@ -8,6 +8,7 @@ import SignIn from './components/SignIn';
 import Dashboard from './pages/dashboard/Dashboard';
 import Home from './pages/home/Home';
 import { StyledToastContainer } from './common/styled-components';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -35,7 +36,12 @@ const App = () => {
             <Route element={<SignUp />} index />
             <Route element={<SignIn />} path='sign-in' />
           </Route>
-          <Route element={<Dashboard />} path='dashboard' />
+
+          {/* Protected routes */}
+          <Route path='' element={<ProtectedRoute />}>
+            <Route element={<Dashboard />} path='dashboard' />
+          </Route>
+
         </Routes>
       </AppContainer>
     </AppWrapper>
