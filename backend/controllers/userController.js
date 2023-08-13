@@ -87,10 +87,24 @@ const getUserProfile = asyncHandler(async (req, res) => {
 // description  Update user profile
 // route        PUT /api/v1/users/profile
 // access       Private
-const updateUserProfile = asyncHandler((req, res) => {
-  res.status(200).json({
-    message: 'Update user Profile'
-  });
+const updateUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+
+    const updatedUser = await user.save();
+
+    res.status(200).json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+    });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
 });
 
 export {
