@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { ErrorText, FormButton, FormFooterTextContainer, FormHeading, FormItem, StyledLink } from '../common/styled-components';
 import { useSignInMutation } from '../slices/userApiSlice';
@@ -35,7 +36,7 @@ const SignIn = () => {
       dispatch(setCredentials({ ...res }));
       navigate('/dashboard');
     } catch (err) {
-      console.error(err?.data?.message || err.error);
+      toast.error(err?.data?.message || err.error);
     }
   };
 
