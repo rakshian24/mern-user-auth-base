@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
+import {ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const FormHeading = styled.h1`
   font-weight: 400;
@@ -102,5 +104,16 @@ export const StyledLink = styled(Link)`
 
   &:hover{
     text-decoration: underline;
+  }
+`;
+
+export const StyledToastContainer = styled(ToastContainer)`
+  &&&.Toastify__toast-container {
+    margin-top: 7rem;
+    font-size: 1.5rem;
+
+    @media screen and (min-width: 501px){
+      margin-top: 6rem;
+    }
   }
 `;

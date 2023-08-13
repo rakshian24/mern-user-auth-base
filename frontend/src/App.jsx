@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Dashboard from './pages/dashboard/Dashboard';
 import Home from './pages/home/Home';
+import { StyledToastContainer } from './common/styled-components';
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -27,6 +28,7 @@ const App = () => {
   return (
     <AppWrapper>
       <Header />
+      <StyledToastContainer />
       <AppContainer>
         <Routes>
           <Route path='/' element={<Home />}>
