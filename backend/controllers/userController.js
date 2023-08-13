@@ -60,9 +60,11 @@ const signUpUser = asyncHandler(async (req, res) => {
 // route        POST /api/v1/users/signOut
 // access       Public
 const signOutUser = asyncHandler((req, res) => {
-  res.status(200).json({
-    message: 'Sign out a user'
+  res.cookie('jwt', '', {
+    httpOnly: true,
+    expires: new Date(0),
   });
+  res.status(200).json({ message: 'Signed out successfully' });
 });
 
 // description  Get a user profile
