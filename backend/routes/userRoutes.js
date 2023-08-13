@@ -6,13 +6,14 @@ import {
     getUserProfile,
     updateUserProfile
 } from "../controllers/userController.js";
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 router.post('/', signUpUser);
 router.post('/signIn', signInUser);
 router.post('/signOut', signOutUser);
-router.get('/profile', getUserProfile);
+router.get('/profile', protect, getUserProfile);
 router.put('/profile', updateUserProfile);
 
 export default router;
