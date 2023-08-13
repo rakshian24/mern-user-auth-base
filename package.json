@@ -1,8 +1,9 @@
 {
   "name": "mern-user-auth-base-be",
   "version": "1.0.0",
-  "description": "",
+  "description": "MERN base auth project",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend"
@@ -12,6 +13,7 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^7.4.3",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.1"
