@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import  secureLocalStorage  from  "react-secure-storage";
 
 const initialState = {
-  userInfo: localStorage.getItem('userInfo')
-    ? JSON.parse(localStorage.getItem('userInfo'))
+  userInfo: secureLocalStorage.getItem('userInfo')
+    ? JSON.parse(secureLocalStorage.getItem('userInfo'))
     : null,
 };
 
@@ -12,11 +13,11 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (state, action) => {
       state.userInfo = action.payload;
-      localStorage.setItem('userInfo', JSON.stringify(action.payload));
+      secureLocalStorage.setItem('userInfo', JSON.stringify(action.payload));
     },
     clearCredentials: (state, action) => {
       state.userInfo = null;
-      localStorage.removeItem('userInfo');
+      secureLocalStorage.removeItem('userInfo');
     },
   },
 });
