@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { Heading, ProfileContainer, UpdateFormFooterContainer } from './styles';
-import { useSelector } from 'react-redux';
-import { ErrorText, FormButton, FormItem } from '../../common/styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+
+import { Heading, ProfileContainer, UpdateFormFooterContainer } from './styles';
+import { ErrorText, FormButton, FormItem } from '../../common/styled-components';
+import { useUpdateUserDetailsMutation } from '../../slices/userApiSlice';
+import LoadingSpinner from '../../components/icons/LoadingSpinner';
+import { setCredentials } from '../../slices/authSlice';
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [formFields, setFormFields] = useState({ name: userInfo?.name || '', email: userInfo?.email || '' });
   const [formError, setFormError] = useState({});
+
+  const dispatch = useDispatch();
+  const [updateUserDetails, { isLoading }] = useUpdateUserDetailsMutation();
 
   const handleValidation = () => {
     let error = {};
@@ -30,10 +38,18 @@ const Profile = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setFormError(handleValidation());
-
-    console.log("UPDATE_VALUE = ", formFields)
+    try {
+      const res = await updateUserDetails({ ...formFields }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      toast.success('Profile updated successfully!')
+    } catch (err) {
+      toast.error('Profile update failed!');
+    }
   };
 
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
 
   return (
     <ProfileContainer>
