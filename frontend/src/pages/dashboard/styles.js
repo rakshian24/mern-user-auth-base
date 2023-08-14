@@ -4,7 +4,7 @@ export const DashboardContainer = styled.div`
   padding-top: 0;
 
   @media screen and (min-width: 1024px){
-    padding-top: 2rem;
+    padding-top: 1rem;
   }
 `;
 
