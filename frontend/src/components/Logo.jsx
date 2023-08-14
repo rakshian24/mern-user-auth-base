@@ -9,7 +9,7 @@ const LogoTitle = styled.div`
 
 const Logo = ({ title }) => {
   return (
-    <Link to="/">
+    <Link to="/dashboard">
       <LogoTitle>{title}</LogoTitle>
     </Link>
   )

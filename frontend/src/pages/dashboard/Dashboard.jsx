@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <DashboardContainer>
       <DashboardTitle>
-        Welcome {userInfo?.name}!
+        Welcome, {userInfo?.name}!
       </DashboardTitle>
     </DashboardContainer>
   )
