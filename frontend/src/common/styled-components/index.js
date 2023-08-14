@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
-import {ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const FormHeading = styled.h1`
@@ -76,13 +76,31 @@ export const FormFooterTextContainer = styled.div`
 `;
 
 export const FormButton = styled.button`
-  background-color: #0077c5;
+  background: ${({ priority }) => {
+    switch (priority) {
+      case 'primary':
+        return '#0077c5';
+      case 'tertiary':
+        return '#e3e5e8';
+      default:
+        return '#0077c5';
+    }
+  }};
   border: none;
   letter-spacing: 0.1rem;
   padding: 1.5rem 2rem;
   text-transform: uppercase;
   border-radius: 10rem;
-  color: #fff;
+  color: ${({ priority }) => {
+    switch (priority) {
+      case 'primary':
+        return '#fff';
+      case 'tertiary':
+        return 'black';
+      default:
+        return '#fff';
+    }
+  }};
   font-weight: 600;
   cursor: pointer;
   transition: background-color 1s ease;
