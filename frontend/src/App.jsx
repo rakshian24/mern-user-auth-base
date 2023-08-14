@@ -9,6 +9,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Home from './pages/home/Home';
 import { StyledToastContainer } from './common/styled-components';
 import ProtectedRoute from './components/ProtectedRoute';
+import Profile from './pages/profile/Profile';
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -40,6 +41,7 @@ const App = () => {
           {/* Protected routes */}
           <Route path='' element={<ProtectedRoute />}>
             <Route element={<Dashboard />} path='dashboard' />
+            <Route element={<Profile />} path='profile' />
           </Route>
 
         </Routes>
