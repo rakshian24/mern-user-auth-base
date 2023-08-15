@@ -1,9 +1,10 @@
 import React from 'react'
-import { ReactComponent as PageNotFoundSvg } from './svgs/PageNotFoundSpaceMan.svg';
 import { styled } from 'styled-components';
-import { useWindowSize } from '../hooks/useWindowResize';
-import { FormButton } from '../common/styled-components/index.js';
 import { Link } from 'react-router-dom';
+
+import { useWindowSize } from '../../hooks/useWindowResize';
+import { FormButton } from '../../common/styled-components/index.js';
+import PageNotFoundAnimated from "../../components/PageNotFoundAnimated"
 
 const PageNotFoundHeader = styled.h1`
   font-size: 2.5rem;
@@ -45,7 +46,7 @@ const PageNotFound = () => {
           </FormButton>
         </Link>
       </div>
-      <PageNotFoundSvg width={getWidth(screenWidth)} />
+      <PageNotFoundAnimated width={getWidth(screenWidth)} />
     </div>
   )
 }
