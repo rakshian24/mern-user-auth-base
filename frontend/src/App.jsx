@@ -10,7 +10,7 @@ import Home from './pages/home/Home';
 import { StyledToastContainer } from './common/styled-components';
 import ProtectedRoute from './components/ProtectedRoute';
 import Profile from './pages/profile/Profile';
-import PageNotFound from './components/PageNotFound';
+import PageNotFound from './pages/pageNotFound/PageNotFound';
 
 const AppWrapper = styled.div`
   height: 100vh;

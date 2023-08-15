@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 import { Heading, ProfileContainer, UpdateFormFooterContainer } from './styles';
 import { ErrorText, FormButton, FormItem } from '../../common/styled-components';
 import { useUpdateUserDetailsMutation } from '../../slices/userApiSlice';
-import LoadingSpinner from '../../components/icons/LoadingSpinner';
 import { setCredentials } from '../../slices/authSlice';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 const Profile = () => {
   const { userInfo } = useSelector((state) => state.auth);

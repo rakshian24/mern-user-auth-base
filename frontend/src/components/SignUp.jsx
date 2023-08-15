@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { ErrorText, FormButton, FormFooterTextContainer, FormHeading, FormItem, StyledLink } from '../common/styled-components';
 import { useSignUpMutation } from '../slices/userApiSlice';
 import { setCredentials } from '../slices/authSlice';
-import LoadingSpinner from './icons/LoadingSpinner';
+import LoadingSpinner from './LoadingSpinner';
 
 const defaultFormFields = {
   name: "",
