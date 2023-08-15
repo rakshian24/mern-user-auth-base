@@ -5,9 +5,9 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from 'url';
 
-import connectDB from "./database/db.js";
-import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
-import userRoutes from "./routes/userRoutes.js";
+import connectDB from "./backend/database/db.js";
+import { notFound, errorHandler } from "./backend/middleware/errorMiddleware.js";
+import userRoutes from "./backend/routes/userRoutes.js";
 dotenv.config({ path: "./.env" });
 
 connectDB();
@@ -33,7 +33,7 @@ app.use('/api/v1/users', userRoutes);
 if (NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   });
 } else if (NODE_ENV === 'development') {
   app.get('/', (req, res) => {
