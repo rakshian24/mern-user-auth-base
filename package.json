@@ -2,13 +2,13 @@
   "name": "mern-user-auth-base-be",
   "version": "1.0.0",
   "description": "MERN base auth project",
-  "main": "backend/server.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon backend/server.js",
+    "server": "nodemon server.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node backend/server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
