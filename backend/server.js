@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 import connectDB from "./database/db.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
-dotenv.config({ path: "./config.env" });
+dotenv.config({ path: "./.env" });
 
 connectDB();
 
